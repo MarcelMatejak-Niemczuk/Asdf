@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator kalorii pączków</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="tlo">
+
+    <div class="zakladka">
+        <h1>Kalkulator kalorii 🍩</h1>
+
+        <form class="form">
+
+            <h3>Nadzienie</h3>
+
+            <label class="option">
+                <input type="checkbox" id="dubajski" name="nadzienie" value="dubajski">
+                Dubajski (500 kcal)
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="czekoladowy" name="nadzienie" value="czekoladowy">
+                Czekoladowy (300 kcal)
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="rozany" name="nadzienie" value="rozany">
+                Różany (350 kcal)
+            </label>
+
+            <h3>Dodatki</h3>
+
+            <label class="option">
+                <input type="checkbox" id="podwojne">
+                2x nadzienie (+200 kcal)
+            </label>
+
+            <label class="option">
+                <input type="checkbox" id="lukier">
+                Lukier (+100 kcal)
+            </label>
+
+            <label class="ilosc">
+                Ilość pączków:
+                <input type="number" id="ilosc" min="1" value="1">
+            </label>
+
+            <button type="button" onclick="oblicz()">Oblicz kalorie</button>
+
+        </form>
+
+        <div id="wynik"></div>
+    </div>
+
+</div>
+
+<script>
+function oblicz() {
+
+    let kalorie = 0;
+
+    if (document.getElementById("dubajski").checked) {
+        kalorie += 500;
+    }
+
+    if (document.getElementById("czekoladowy").checked) {
+        kalorie += 300;
+    }
+
+    if (document.getElementById("rozany").checked) {
+        kalorie += 350;
+    }
+
+    if (document.getElementById("podwojne").checked) {
+        kalorie += 200;
+    }
+
+    if (document.getElementById("lukier").checked) {
+        kalorie += 100;
+    }
+
+    let ilosc = parseInt(document.getElementById("ilosc").value);
+    kalorie = kalorie * ilosc;
+
+    let wynik = document.getElementById("wynik");
+
+    if (kalorie > 2000) {
+        wynik.innerHTML = "Zjadasz " + kalorie + " Ty tłuścioczku to za dużo! 🍩";
+    } else {
+        wynik.innerHTML = "Zjadasz " + kalorie + " kcal 🍩";
+    }
+}
+</script>
+
+</body>
+</html>
